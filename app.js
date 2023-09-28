@@ -14,6 +14,7 @@ const { Socket } = require('socket.io')
 
 const app = express()
 
+app.use(require('express-status-monitor')())
 app.use(compression())
 dotenv.config()
 console.log('Backend is running...')
@@ -68,7 +69,7 @@ app.use('/auth', authRoutes)
 
 //error handling middleware
 app.use((error, req, res, next) => {
-  console.log(error)
+  // console.log(error)
   const status = error.statusCode || 500
   const message = error.message
   const data = error.data

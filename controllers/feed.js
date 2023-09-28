@@ -129,7 +129,7 @@ exports.updatePost = async (req, res, next) => {
     throw error
   }
 
-  console.log('req.body-------\n', req.body, '\n\n')
+  // console.log('req.body-------\n', req.body, '\n\n')
 
   const title = req.body.title // rest are comes from frontend
   const content = req.body.content
@@ -202,7 +202,7 @@ exports.deletePost = async (req, res, next) => {
     clearImage(post.imageUrl)
     const result = await Post.findByIdAndRemove(postId)
 
-    console.log(result)
+    // console.log(result)
     const user = await User.findById(req.userId)
 
     user.posts.pull(postId)
